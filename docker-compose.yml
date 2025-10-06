@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  bonded-site:
+    build: .
+    container_name: bonded_site
+    restart: unless-stopped
+    networks:
+      - shared-services
+    ports:
+      - "8081:80"
+
+networks:
+  shared-services:
+    external: true
