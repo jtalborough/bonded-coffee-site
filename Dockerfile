@@ -2,7 +2,7 @@ FROM hugomods/hugo:exts-0.139.4 AS builder
 
 WORKDIR /src
 COPY . .
-RUN hugo --minify
+RUN hugo --verbose
 
 FROM nginx:alpine
 COPY --from=builder /src/public /usr/share/nginx/html
