@@ -1,3 +1,99 @@
 {{ define "main" }}
-  {{ .Content }}
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>{{ .Params.hero.headline }}</h1>
+    <p>{{ .Params.hero.subheadline }}</p>
+    <div class="hero-ctas">
+      <a href="{{ .Params.hero.cta_primary.url }}" class="btn-primary">{{ .Params.hero.cta_primary.text }}</a>
+      <a href="{{ .Params.hero.cta_secondary.url }}" class="btn-secondary">{{ .Params.hero.cta_secondary.text }}</a>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Products Section -->
+  <section id="bonds">
+    <h2>{{ .Params.products_section.title }}</h2>
+    <div class="products">
+      {{ range .Params.products_section.products }}
+        <div class="product {{ if .featured }}featured{{ end }}">
+          <h3>{{ .name }}</h3>
+          <p><strong>{{ .price }}</strong> — {{ .size }}</p>
+          {{ if .origin }}<p><em>{{ .origin }}</em></p>{{ end }}
+          <p>{{ .description }}</p>
+          <p><strong>Roast Date:</strong> {{ .roast_date }}</p>
+          <p><strong>Notes:</strong> {{ .notes }}</p>
+          <button class="btn-product" disabled>{{ .button_text }}</button>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- How It Works Section -->
+  <section>
+    <h2>{{ .Params.how_it_works.title }}</h2>
+    <ol>
+      {{ range .Params.how_it_works.steps }}
+        <li>{{ . | markdownify }}</li>
+      {{ end }}
+    </ol>
+  </section>
+
+  <hr>
+
+  <!-- Our Farm Section -->
+  <section>
+    <h2>{{ .Params.our_farm.title }}</h2>
+    <p>{{ .Params.our_farm.content }}</p>
+  </section>
+
+  <hr>
+
+  <!-- Find Us Section -->
+  <section>
+    <h2>{{ .Params.find_us.title }}</h2>
+    <p>
+      <strong>{{ .Params.find_us.locations_title }}</strong><br>
+      {{ range .Params.find_us.locations }}
+        {{ . }}<br>
+      {{ end }}
+    </p>
+    <p>
+      <strong>{{ .Params.find_us.contact_title }}</strong><br>
+      Email: <a href="mailto:{{ .Params.find_us.contact_email }}">{{ .Params.find_us.contact_email }}</a><br>
+      Instagram: <a href="https://instagram.com/{{ .Params.find_us.contact_instagram }}" target="_blank">{{ .Params.find_us.contact_instagram }}</a>
+    </p>
+  </section>
+
+  <hr>
+
+  <!-- Join Section -->
+  <section id="join">
+    <h2>{{ .Params.join_section.title }}</h2>
+    <p>{{ .Params.join_section.subheadline }}</p>
+    <form action="{{ .Params.join_section.form_action }}" method="post" class="email-signup">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <input type="hidden" name="nonce" value="">
+      <input type="hidden" name="l" value="{{ .Params.join_section.list_id }}">
+      <button type="submit">Join</button>
+    </form>
+  </section>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <strong>{{ .Params.footer.brand_name }}</strong>
+    <p>{{ .Params.footer.tagline }}<br>{{ .Params.footer.location }}<br>{{ .Params.footer.established }}</p>
+    <p>
+      <a href="{{ .Params.footer.instagram_url }}" target="_blank">Instagram</a> • 
+      <a href="{{ .Params.footer.email }}">Email</a>
+    </p>
+  </footer>
+
+</main>
 {{ end }}
+

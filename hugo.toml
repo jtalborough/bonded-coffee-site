@@ -4,6 +4,9 @@ title = "Bonded Coffee Co"
 theme = ""
 disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [params]
   description = "Small-batch coffee roasted on our 14-acre farm in Lost River Valley, WV"
   author = "Bonded Coffee Co"
