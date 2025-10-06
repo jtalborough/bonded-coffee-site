@@ -2,6 +2,10 @@ FROM hugomods/hugo:exts-0.139.4 AS builder
 
 WORKDIR /src
 COPY . .
+
+# Fix file permissions for the hugo user
+RUN chown -R hugo:hugo /src
+
 RUN hugo --minify --logLevel info
 
 FROM nginx:alpine
