@@ -1,7 +1,6 @@
 baseURL = "https://bonded.designbuildautomate.io"
 languageCode = "en-us"
 title = "Bonded Coffee Co"
-theme = ""
 disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
 
 [markup.goldmark.renderer]
