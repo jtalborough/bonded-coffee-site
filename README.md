@@ -49,6 +49,8 @@ docker run -p 8081:80 bonded-coffee-site
 2. In Portainer, add an environment variable `TUNNEL_TOKEN` to the stack (Secrets recommended) with the value from Cloudflare.
 3. Deploy the stack – the dedicated `bonded_cloudflared` container will start the tunnel and route traffic to `bonded_site`.
 
+> The `bonded-site` service is pinned to the static IP `172.25.0.3` on the shared network. Ensure the `shared-services` network exists as an external Docker network with that subnet provisioned before deploying.
+
 ## Content Updates
 
 Edit `content/_index.md` to update:

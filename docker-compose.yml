@@ -6,7 +6,8 @@ services:
     container_name: bonded_site
     restart: unless-stopped
     networks:
-      - shared-services
+      shared-services:
+        ipv4_address: 172.25.0.3
     ports:
       - "8081:80"
 
