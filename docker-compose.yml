@@ -11,18 +11,6 @@ services:
     ports:
       - "8081:80"
 
-  cloudflared:
-    image: cloudflare/cloudflared:2024.10.1
-    container_name: bonded_cloudflared
-    restart: unless-stopped
-    environment:
-      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
-    depends_on:
-      - bonded-site
-    networks:
-      - shared-services
-
 networks:
   shared-services:
     external: true
