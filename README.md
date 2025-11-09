@@ -45,11 +45,9 @@ docker run -p 8081:80 bonded-coffee-site
 
 ### Cloudflare Tunnel
 
-Add to tunnel config:
-```yaml
-- hostname: bonded.designbuildautomate.io
-  service: http://bonded_site:80
-```
+1. Create a Cloudflare tunnel for `bonded.designbuildautomate.io` and obtain the `TUNNEL_TOKEN` from the dashboard.
+2. In Portainer, add an environment variable `TUNNEL_TOKEN` to the stack (Secrets recommended) with the value from Cloudflare.
+3. Deploy the stack – the dedicated `bonded_cloudflared` container will start the tunnel and route traffic to `bonded_site`.
 
 ## Content Updates
 
